@@ -43,24 +43,32 @@ import voldemort.versioning.Versioned;
 import com.google.common.collect.Maps;
 
 /**
- * The default {@link voldemort.client.StoreClient StoreClient} implementation
- * you get back from a {@link voldemort.client.StoreClientFactory
- * StoreClientFactory}
- * 
- * 
- * @param <K> The key type
- * @param <V> The value type
+ * The default  {@link voldemort.client.StoreClient  StoreClient}  implementation you get back from a  {@link voldemort.client.StoreClientFactory  StoreClientFactory}
+ * @param  < K  >  The key type
+ * @param  < V  >  The value type
  */
 @Threadsafe
 @JmxManaged(description = "A voldemort client")
 public class DefaultStoreClient<K, V> implements StoreClient<K, V> {
 
     private final Logger logger = Logger.getLogger(DefaultStoreClient.class);
+    /**
+	 * @uml.property  name="storeFactory"
+	 * @uml.associationEnd  
+	 */
     private final StoreClientFactory storeFactory;
 
     private final int metadataRefreshAttempts;
     private final String storeName;
+    /**
+	 * @uml.property  name="resolver"
+	 * @uml.associationEnd  
+	 */
     private final InconsistencyResolver<Versioned<V>> resolver;
+    /**
+	 * @uml.property  name="store"
+	 * @uml.associationEnd  
+	 */
     private volatile Store<K, V> store;
 
     public DefaultStoreClient(String storeName,

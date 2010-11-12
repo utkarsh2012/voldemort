@@ -64,8 +64,10 @@ public abstract class AbstractRWHadoopStoreBuilderMapper<K, V> extends
     private CompressionStrategy keyCompressor;
     private SerializerDefinition keySerializerDefinition;
     private SerializerDefinition valueSerializerDefinition;
-    private int sizeInt = ByteUtils.SIZE_OF_INT, vectorNodeId;
-    private long vectorNodeVersion, jobStartTime;
+    private int sizeInt = ByteUtils.SIZE_OF_INT;
+	private int vectorNodeId;
+    private long vectorNodeVersion;
+	private long jobStartTime;
     private List<ClockEntry> versions = new ArrayList<ClockEntry>();
     private VectorClock vectorClock;
 

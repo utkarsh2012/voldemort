@@ -59,7 +59,8 @@ public class HdfsFetcher implements FileFetcher {
     private static final long REPORTING_INTERVAL_BYTES = 100 * 1024 * 1024;
     private static final int DEFAULT_BUFFER_SIZE = 64 * 1024;
 
-    private final Long maxBytesPerSecond, reportingIntervalBytes;
+    private final Long maxBytesPerSecond;
+	private final Long reportingIntervalBytes;
     private final int bufferSize;
     private static final AtomicInteger copyCount = new AtomicInteger(0);
     private AsyncOperationStatus status;

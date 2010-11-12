@@ -38,38 +38,96 @@ import voldemort.utils.Utils;
 
 /**
  * A configuration object that holds configuration parameters for the client.
- * 
- * 
  */
 public class ClientConfig {
 
+    /**
+	 * @uml.property  name="maxConnectionsPerNode"
+	 */
     private volatile int maxConnectionsPerNode = 6;
+    /**
+	 * @uml.property  name="maxTotalConnections"
+	 */
     private volatile int maxTotalConnections = 500;
+    /**
+	 * @uml.property  name="maxThreads"
+	 */
     private volatile int maxThreads = 5;
+    /**
+	 * @uml.property  name="maxQueuedRequests"
+	 */
     private volatile int maxQueuedRequests = 50;
     private volatile long threadIdleMs = 100000;
     private volatile long connectionTimeoutMs = 500;
     private volatile long socketTimeoutMs = 5000;
+    /**
+	 * @uml.property  name="socketKeepAlive"
+	 */
     private volatile boolean socketKeepAlive = false;
+    /**
+	 * @uml.property  name="selectors"
+	 */
     private volatile int selectors = 4;
     private volatile long routingTimeoutMs = 15000;
+    /**
+	 * @uml.property  name="socketBufferSize"
+	 */
     private volatile int socketBufferSize = 64 * 1024;
+    /**
+	 * @uml.property  name="serializerFactory"
+	 * @uml.associationEnd  
+	 */
     private volatile SerializerFactory serializerFactory = new DefaultSerializerFactory();
+    /**
+	 * @uml.property  name="bootstrapUrls"
+	 */
     private volatile List<String> bootstrapUrls = null;
+    /**
+	 * @uml.property  name="requestFormatType"
+	 * @uml.associationEnd  
+	 */
     private volatile RequestFormatType requestFormatType = RequestFormatType.VOLDEMORT_V1;
+    /**
+	 * @uml.property  name="routingTier"
+	 * @uml.associationEnd  
+	 */
     private volatile RoutingTier routingTier = RoutingTier.CLIENT;
     private volatile boolean enableJmx = true;
 
     private volatile boolean enablePipelineRoutedStore = false;
     private volatile int clientZoneId = Zone.DEFAULT_ZONE_ID;
 
+    /**
+	 * @uml.property  name="failureDetectorImplementation"
+	 */
     private volatile String failureDetectorImplementation = FailureDetectorConfig.DEFAULT_IMPLEMENTATION_CLASS_NAME;
+    /**
+	 * @uml.property  name="failureDetectorBannagePeriod"
+	 */
     private volatile long failureDetectorBannagePeriod = FailureDetectorConfig.DEFAULT_BANNAGE_PERIOD;
+    /**
+	 * @uml.property  name="failureDetectorThreshold"
+	 */
     private volatile int failureDetectorThreshold = FailureDetectorConfig.DEFAULT_THRESHOLD;
+    /**
+	 * @uml.property  name="failureDetectorThresholdCountMinimum"
+	 */
     private volatile int failureDetectorThresholdCountMinimum = FailureDetectorConfig.DEFAULT_THRESHOLD_COUNT_MINIMUM;
+    /**
+	 * @uml.property  name="failureDetectorThresholdInterval"
+	 */
     private volatile long failureDetectorThresholdInterval = FailureDetectorConfig.DEFAULT_THRESHOLD_INTERVAL;
+    /**
+	 * @uml.property  name="failureDetectorAsyncRecoveryInterval"
+	 */
     private volatile long failureDetectorAsyncRecoveryInterval = FailureDetectorConfig.DEFAULT_ASYNC_RECOVERY_INTERVAL;
+    /**
+	 * @uml.property  name="failureDetectorCatastrophicErrorTypes"
+	 */
     private volatile List<String> failureDetectorCatastrophicErrorTypes = FailureDetectorConfig.DEFAULT_CATASTROPHIC_ERROR_TYPES;
+    /**
+	 * @uml.property  name="failureDetectorRequestLengthThreshold"
+	 */
     private long failureDetectorRequestLengthThreshold = socketTimeoutMs;
 
     private volatile int maxBootstrapRetries = 2;
@@ -95,6 +153,9 @@ public class ClientConfig {
     public static final String REQUEST_FORMAT_PROPERTY = "request_format";
     public static final String ENABLE_JMX_PROPERTY = "enable_jmx";
     public static final String ENABLE_PIPELINE_ROUTED_STORE_PROPERTY = "enable_pipeline_routed_store";
+    /**
+	 * @uml.property  name="cLIENT_ZONE_ID"
+	 */
     public static final String CLIENT_ZONE_ID = "client_zone_id";
     public static final String FAILUREDETECTOR_IMPLEMENTATION_PROPERTY = "failuredetector_implementation";
     public static final String FAILUREDETECTOR_BANNAGE_PERIOD_PROPERTY = "failuredetector_bannage_period";
@@ -104,6 +165,9 @@ public class ClientConfig {
     public static final String FAILUREDETECTOR_ASYNCRECOVERY_INTERVAL_PROPERTY = "failuredetector_asyncscan_interval";
     public static final String FAILUREDETECTOR_CATASTROPHIC_ERROR_TYPES_PROPERTY = "failuredetector_catastrophic_error_types";
     public static final String FAILUREDETECTOR_REQUEST_LENGTH_THRESHOLD_PROPERTY = "failuredetector_request_length_threshold";
+    /**
+	 * @uml.property  name="mAX_BOOTSTRAP_RETRIES"
+	 */
     public static final String MAX_BOOTSTRAP_RETRIES = "max_bootstrap_retries";
 
     /**
@@ -230,15 +294,19 @@ public class ClientConfig {
             this.setMaxBootstrapRetries(props.getInt(MAX_BOOTSTRAP_RETRIES));
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="maxConnectionsPerNode"
+	 */
     public int getMaxConnectionsPerNode() {
         return maxConnectionsPerNode;
     }
 
     /**
-     * Set the maximum number of connection allowed to each voldemort node
-     * 
-     * @param maxConnectionsPerNode The maximum number of connections
-     */
+	 * Set the maximum number of connection allowed to each voldemort node
+	 * @param maxConnectionsPerNode  The maximum number of connections
+	 * @uml.property  name="maxConnectionsPerNode"
+	 */
     public ClientConfig setMaxConnectionsPerNode(int maxConnectionsPerNode) {
         if(maxConnectionsPerNode <= 0)
             throw new IllegalArgumentException("Value must be greater than zero.");
@@ -246,15 +314,19 @@ public class ClientConfig {
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="maxTotalConnections"
+	 */
     public int getMaxTotalConnections() {
         return maxTotalConnections;
     }
 
     /**
-     * Set the maximum number of connections allowed to all voldemort nodes
-     * 
-     * @param maxTotalConnections The maximum total number of connections
-     */
+	 * Set the maximum number of connections allowed to all voldemort nodes
+	 * @param maxTotalConnections  The maximum total number of connections
+	 * @uml.property  name="maxTotalConnections"
+	 */
     public ClientConfig setMaxTotalConnections(int maxTotalConnections) {
         if(maxTotalConnections <= 0)
             throw new IllegalArgumentException("Value must be greater than zero.");
@@ -279,19 +351,37 @@ public class ClientConfig {
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="socketKeepAlive"
+	 */
     public boolean getSocketKeepAlive() {
         return socketKeepAlive;
     }
 
+    /**
+	 * @param socketKeepAlive
+	 * @return
+	 * @uml.property  name="socketKeepAlive"
+	 */
     public ClientConfig setSocketKeepAlive(boolean socketKeepAlive) {
         this.socketKeepAlive = socketKeepAlive;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="selectors"
+	 */
     public int getSelectors() {
         return selectors;
     }
 
+    /**
+	 * @param selectors
+	 * @return
+	 * @uml.property  name="selectors"
+	 */
     public ClientConfig setSelectors(int selectors) {
         this.selectors = selectors;
         return this;
@@ -366,48 +456,63 @@ public class ClientConfig {
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="maxQueuedRequests"
+	 */
     public int getMaxQueuedRequests() {
         return maxQueuedRequests;
     }
 
     /**
-     * Set the maximum number of queued node operations before client actions
-     * will be blocked
-     * 
-     * @param maxQueuedRequests The maximum number of queued requests
-     */
+	 * Set the maximum number of queued node operations before client actions will be blocked
+	 * @param maxQueuedRequests  The maximum number of queued requests
+	 * @uml.property  name="maxQueuedRequests"
+	 */
     public ClientConfig setMaxQueuedRequests(int maxQueuedRequests) {
         this.maxQueuedRequests = maxQueuedRequests;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="socketBufferSize"
+	 */
     public int getSocketBufferSize() {
         return socketBufferSize;
     }
 
     /**
-     * Set the size of the socket buffer to use for both socket reads and socket
-     * writes
-     * 
-     * @param socketBufferSize The size of the socket buffer in bytes
-     */
+	 * Set the size of the socket buffer to use for both socket reads and socket writes
+	 * @param socketBufferSize  The size of the socket buffer in bytes
+	 * @uml.property  name="socketBufferSize"
+	 */
     public ClientConfig setSocketBufferSize(int socketBufferSize) {
         this.socketBufferSize = socketBufferSize;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="serializerFactory"
+	 */
     public SerializerFactory getSerializerFactory() {
         return serializerFactory;
     }
 
     /**
-     * Set the SerializerFactory used to serialize and deserialize values
-     */
+	 * Set the SerializerFactory used to serialize and deserialize values
+	 * @uml.property  name="serializerFactory"
+	 */
     public ClientConfig setSerializerFactory(SerializerFactory serializerFactory) {
         this.serializerFactory = Utils.notNull(serializerFactory);
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="bootstrapUrls"
+	 */
     public String[] getBootstrapUrls() {
         if(this.bootstrapUrls == null)
             throw new IllegalStateException("No bootstrap urls have been set.");
@@ -415,10 +520,10 @@ public class ClientConfig {
     }
 
     /**
-     * Set the bootstrap urls from which to attempt a connection
-     * 
-     * @param bootstrapUrls The urls to bootstrap from
-     */
+	 * Set the bootstrap urls from which to attempt a connection
+	 * @param bootstrapUrls  The urls to bootstrap from
+	 * @uml.property  name="bootstrapUrls"
+	 */
     public ClientConfig setBootstrapUrls(List<String> bootstrapUrls) {
         this.bootstrapUrls = Utils.notNull(bootstrapUrls);
         if(this.bootstrapUrls.size() <= 0)
@@ -438,46 +543,55 @@ public class ClientConfig {
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="requestFormatType"
+	 */
     public RequestFormatType getRequestFormatType() {
         return requestFormatType;
     }
 
     /**
-     * Set the request format type used for network communications (for example
-     * protocol buffers)
-     * 
-     * @param requestFormatType The type of the network protocol
-     */
+	 * Set the request format type used for network communications (for example protocol buffers)
+	 * @param requestFormatType  The type of the network protocol
+	 * @uml.property  name="requestFormatType"
+	 */
     public ClientConfig setRequestFormatType(RequestFormatType requestFormatType) {
         this.requestFormatType = Utils.notNull(requestFormatType);
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="routingTier"
+	 */
     public RoutingTier getRoutingTier() {
         return routingTier;
     }
 
     /**
-     * Set the tier at which routing occurs. Client-side routing occurs on the
-     * client, and server-side routing on the server. This is not yet used, as
-     * the java client only supports client-side routing.
-     * 
-     * @param routingTier The routing tier to use for routing requests
-     */
+	 * Set the tier at which routing occurs. Client-side routing occurs on the client, and server-side routing on the server. This is not yet used, as the java client only supports client-side routing.
+	 * @param routingTier  The routing tier to use for routing requests
+	 * @uml.property  name="routingTier"
+	 */
     public ClientConfig setRoutingTier(RoutingTier routingTier) {
         this.routingTier = Utils.notNull(routingTier);
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="maxThreads"
+	 */
     public int getMaxThreads() {
         return maxThreads;
     }
 
     /**
-     * Set the maximum number of client threads
-     * 
-     * @param maxThreads The maximum number of client threads
-     */
+	 * Set the maximum number of client threads
+	 * @param maxThreads  The maximum number of client threads
+	 * @uml.property  name="maxThreads"
+	 */
     public ClientConfig setMaxThreads(int maxThreads) {
         this.maxThreads = maxThreads;
         return this;
@@ -492,20 +606,29 @@ public class ClientConfig {
     }
 
     /**
-     * Enable JMX monitoring of the clients?
-     * 
-     * @param enableJmx If true JMX monitoring of the clients will be enabled
-     */
+	 * Enable JMX monitoring of the clients?
+	 * @param enableJmx  If true JMX monitoring of the clients will be enabled
+	 * @uml.property  name="enableJmx"
+	 */
     public ClientConfig setEnableJmx(boolean enableJmx) {
         this.enableJmx = enableJmx;
         return this;
     }
 
+    /**
+	 * @param clientZoneId
+	 * @return
+	 * @uml.property  name="clientZoneId"
+	 */
     public ClientConfig setClientZoneId(int clientZoneId) {
         this.clientZoneId = clientZoneId;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="cLIENT_ZONE_ID"
+	 */
     public int getClientZoneId() {
         return this.clientZoneId;
     }
@@ -514,94 +637,174 @@ public class ClientConfig {
         return enablePipelineRoutedStore;
     }
 
+    /**
+	 * @param enablePipelineRoutedStore
+	 * @return
+	 * @uml.property  name="enablePipelineRoutedStore"
+	 */
     public ClientConfig setEnablePipelineRoutedStore(boolean enablePipelineRoutedStore) {
         this.enablePipelineRoutedStore = enablePipelineRoutedStore;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorImplementation"
+	 */
     public String getFailureDetectorImplementation() {
         return failureDetectorImplementation;
     }
 
+    /**
+	 * @param failureDetectorImplementation
+	 * @return
+	 * @uml.property  name="failureDetectorImplementation"
+	 */
     public ClientConfig setFailureDetectorImplementation(String failureDetectorImplementation) {
         this.failureDetectorImplementation = failureDetectorImplementation;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorBannagePeriod"
+	 */
     public long getFailureDetectorBannagePeriod() {
         return failureDetectorBannagePeriod;
     }
 
+    /**
+	 * @param failureDetectorBannagePeriod
+	 * @return
+	 * @uml.property  name="failureDetectorBannagePeriod"
+	 */
     public ClientConfig setFailureDetectorBannagePeriod(long failureDetectorBannagePeriod) {
         this.failureDetectorBannagePeriod = failureDetectorBannagePeriod;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorThreshold"
+	 */
     public int getFailureDetectorThreshold() {
         return failureDetectorThreshold;
     }
 
+    /**
+	 * @param failureDetectorThreshold
+	 * @return
+	 * @uml.property  name="failureDetectorThreshold"
+	 */
     public ClientConfig setFailureDetectorThreshold(int failureDetectorThreshold) {
         this.failureDetectorThreshold = failureDetectorThreshold;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorThresholdCountMinimum"
+	 */
     public int getFailureDetectorThresholdCountMinimum() {
         return failureDetectorThresholdCountMinimum;
     }
 
+    /**
+	 * @param failureDetectorThresholdCountMinimum
+	 * @return
+	 * @uml.property  name="failureDetectorThresholdCountMinimum"
+	 */
     public ClientConfig setFailureDetectorThresholdCountMinimum(int failureDetectorThresholdCountMinimum) {
         this.failureDetectorThresholdCountMinimum = failureDetectorThresholdCountMinimum;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorThresholdInterval"
+	 */
     public long getFailureDetectorThresholdInterval() {
         return failureDetectorThresholdInterval;
     }
 
+    /**
+	 * @param failureDetectorThresholdInterval
+	 * @return
+	 * @uml.property  name="failureDetectorThresholdInterval"
+	 */
     public ClientConfig setFailureDetectorThresholdInterval(long failureDetectorThresholdInterval) {
         this.failureDetectorThresholdInterval = failureDetectorThresholdInterval;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorAsyncRecoveryInterval"
+	 */
     public long getFailureDetectorAsyncRecoveryInterval() {
         return failureDetectorAsyncRecoveryInterval;
     }
 
+    /**
+	 * @param failureDetectorAsyncRecoveryInterval
+	 * @return
+	 * @uml.property  name="failureDetectorAsyncRecoveryInterval"
+	 */
     public ClientConfig setFailureDetectorAsyncRecoveryInterval(long failureDetectorAsyncRecoveryInterval) {
         this.failureDetectorAsyncRecoveryInterval = failureDetectorAsyncRecoveryInterval;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorCatastrophicErrorTypes"
+	 */
     public List<String> getFailureDetectorCatastrophicErrorTypes() {
         return failureDetectorCatastrophicErrorTypes;
     }
 
+    /**
+	 * @param failureDetectorCatastrophicErrorTypes
+	 * @return
+	 * @uml.property  name="failureDetectorCatastrophicErrorTypes"
+	 */
     public ClientConfig setFailureDetectorCatastrophicErrorTypes(List<String> failureDetectorCatastrophicErrorTypes) {
         this.failureDetectorCatastrophicErrorTypes = failureDetectorCatastrophicErrorTypes;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetectorRequestLengthThreshold"
+	 */
     public long getFailureDetectorRequestLengthThreshold() {
         return failureDetectorRequestLengthThreshold;
     }
 
+    /**
+	 * @param failureDetectorRequestLengthThreshold
+	 * @return
+	 * @uml.property  name="failureDetectorRequestLengthThreshold"
+	 */
     public ClientConfig setFailureDetectorRequestLengthThreshold(long failureDetectorRequestLengthThreshold) {
         this.failureDetectorRequestLengthThreshold = failureDetectorRequestLengthThreshold;
         return this;
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="mAX_BOOTSTRAP_RETRIES"
+	 */
     public int getMaxBootstrapRetries() {
         return maxBootstrapRetries;
     }
 
     /**
-     * If we are unable to bootstrap, how many times should we re-try?
-     * 
-     * @param maxBootstrapRetries Maximum times to retry bootstrapping (must be
-     *        >= 1)
-     * @throws IllegalArgumentException If maxBootstrapRetries < 1
-     */
+	 * If we are unable to bootstrap, how many times should we re-try?
+	 * @param maxBootstrapRetries  Maximum times to retry bootstrapping (must be  >= 1)
+	 * @throws IllegalArgumentException  If maxBootstrapRetries < 1
+	 * @uml.property  name="maxBootstrapRetries"
+	 */
     public ClientConfig setMaxBootstrapRetries(int maxBootstrapRetries) {
         if(maxBootstrapRetries < 1)
             throw new IllegalArgumentException("maxBootstrapRetries should be >= 1");

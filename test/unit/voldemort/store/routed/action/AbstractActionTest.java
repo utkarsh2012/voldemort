@@ -33,10 +33,12 @@ import voldemort.xml.StoreDefinitionsMapper;
 
 public class AbstractActionTest {
 
-    protected Cluster cluster, clusterWithZones;
+    protected Cluster cluster;
+	protected Cluster clusterWithZones;
     protected StoreDefinition storeDef;
     protected final ByteArray aKey = TestUtils.toByteArray("jay");
-    protected FailureDetector failureDetector, failureDetectorWithZones;
+    protected FailureDetector failureDetector;
+	protected FailureDetector failureDetectorWithZones;
 
     @Before
     public void setUp() throws Exception {

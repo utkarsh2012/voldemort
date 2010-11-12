@@ -21,7 +21,9 @@ import java.util.Random;
 public class UniformIntegerGenerator extends IntegerGenerator {
 
     private Random random;
-    private int lowerBound, upperBound, interval;
+    private int lowerBound;
+	private int upperBound;
+	private int interval;
 
     public UniformIntegerGenerator(int lb, int ub) {
         this.random = new Random();

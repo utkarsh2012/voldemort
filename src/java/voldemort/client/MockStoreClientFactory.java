@@ -33,18 +33,31 @@ import voldemort.versioning.VectorClockInconsistencyResolver;
 import voldemort.versioning.Versioned;
 
 /**
- * A store client that produces non-persistent, in-memory stores. This is useful
- * for unit testing.
- * 
- * 
+ * A store client that produces non-persistent, in-memory stores. This is useful for unit testing.
  */
 @SuppressWarnings("unchecked")
 public class MockStoreClientFactory implements StoreClientFactory {
 
     private final int nodeId;
+    /**
+	 * @uml.property  name="keySerializer"
+	 * @uml.associationEnd  
+	 */
     private final Serializer<?> keySerializer;
+    /**
+	 * @uml.property  name="valueSerializer"
+	 * @uml.associationEnd  
+	 */
     private final Serializer<?> valueSerializer;
+    /**
+	 * @uml.property  name="time"
+	 * @uml.associationEnd  
+	 */
     private final Time time;
+    /**
+	 * @uml.property  name="failureDetector"
+	 * @uml.associationEnd  
+	 */
     private final FailureDetector failureDetector;
 
     public MockStoreClientFactory(Serializer<?> keySerializer, Serializer<?> valueSerializer) {
@@ -98,6 +111,10 @@ public class MockStoreClientFactory implements StoreClientFactory {
 
     }
 
+    /**
+	 * @return
+	 * @uml.property  name="failureDetector"
+	 */
     public FailureDetector getFailureDetector() {
         return failureDetector;
     }

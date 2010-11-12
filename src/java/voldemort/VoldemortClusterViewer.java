@@ -24,11 +24,18 @@ import java.util.*;
 
 /**
  * Inspect a cluster configuration to determine whether it can be rebalanced to a target cluster geometry.
- *
  */
 public class VoldemortClusterViewer {
 
+    /**
+	 * @uml.property  name="originalCluster"
+	 * @uml.associationEnd  
+	 */
     private final Cluster originalCluster;
+    /**
+	 * @uml.property  name="storeDefinition"
+	 * @uml.associationEnd  
+	 */
     private final StoreDefinition storeDefinition;
 
 

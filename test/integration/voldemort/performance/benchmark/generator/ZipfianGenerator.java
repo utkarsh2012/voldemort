@@ -32,8 +32,22 @@ public class ZipfianGenerator extends IntegerGenerator {
 
     public static final double ZIPFIAN_CONSTANT = 0.99;
 
-    private long items, base, countZeta;
-    private double zipfianConstant, alpha, zetan, eta, theta, zeta2theta;
+    private long items;
+
+	private long base;
+
+	private long countZeta;
+    private double zipfianConstant;
+
+	private double alpha;
+
+	private double zetan;
+
+	private double eta;
+
+	private double theta;
+
+	private double zeta2theta;
     private Random random;
     boolean allowItemCountDecrease = false;
 

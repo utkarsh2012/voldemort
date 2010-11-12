@@ -44,7 +44,9 @@ public class HadoopRWStoreBuilderReducer extends AbstractStoreBuilderConfigurabl
     private static final Logger logger = Logger.getLogger(HadoopRWStoreBuilderReducer.class);
 
     private AdminClient client;
-    private int nodeId, chunkId;
+    private int nodeId;
+
+	private int chunkId;
     private Iterator<Pair<ByteArray, Versioned<byte[]>>> iterator;
     private long totalBytes;
     private long transferStartTime;

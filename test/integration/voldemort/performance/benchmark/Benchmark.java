@@ -104,8 +104,17 @@ public class Benchmark {
     private StoreClient<Object, Object> storeClient;
     private StoreClientFactory factory;
 
-    private int numThreads, numIterations, targetThroughput, recordCount, opsCount,
-            statusIntervalSec;
+    private int numThreads;
+
+	private int numIterations;
+
+	private int targetThroughput;
+
+	private int recordCount;
+
+	private int opsCount;
+
+	private int statusIntervalSec;
     private double perThreadThroughputPerMs;
     private Workload workLoad;
     private String pluginName;

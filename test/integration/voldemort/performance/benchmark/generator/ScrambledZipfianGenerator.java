@@ -33,7 +33,9 @@ public class ScrambledZipfianGenerator extends IntegerGenerator {
     public static final long ITEM_COUNT = 10000000000L;
 
     private ZipfianGenerator generator;
-    private long min, max, itemCount;
+    private long min;
+	private long max;
+	private long itemCount;
     private FnvHashFunction hash;
 
     public ScrambledZipfianGenerator(long items) {

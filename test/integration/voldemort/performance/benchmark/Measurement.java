@@ -22,7 +22,12 @@ import java.util.HashMap;
 class Results {
 
     public int operations;
-    public long totalLatency, minLatency, maxLatency, q99Latency, q95Latency, medianLatency;
+    public long totalLatency;
+	public long minLatency;
+	public long maxLatency;
+	public long q99Latency;
+	public long q95Latency;
+	public long medianLatency;
 
     public Results(int ops, long minL, long maxL, long totalLat, long medL, long q95, long q99) {
         this.operations = ops;

@@ -59,7 +59,8 @@ public class HadoopRWStoreBuilder {
     private final StoreDefinition storeDef;
     private final Path inputPath;
     private final Path tempPath;
-    private final int reducersPerNode, vectorNodeId;
+    private final int reducersPerNode;
+	private final int vectorNodeId;
     private final long vectorNodeVersion;
 
     @SuppressWarnings("unchecked")

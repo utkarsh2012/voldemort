@@ -44,13 +44,15 @@ import voldemort.versioning.Versioned;
 
 /**
  * A toy shell to interact with the server via the command line
- * 
- * 
  */
 public class VoldemortClientShell {
 
     private static final String PROMPT = "> ";
 
+    /**
+	 * @uml.property  name="client"
+	 * @uml.associationEnd  
+	 */
     private static DefaultStoreClient<Object, Object> client;
 
     public static void main(String[] args) throws Exception {
